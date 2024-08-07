@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 const RegistrationPage = () => {
 
-    const [state, setState] = useState("SignUp");
+    const [state, setState] = useState("Login");
 
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");

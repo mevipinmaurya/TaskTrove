@@ -84,6 +84,7 @@ const login = async (req, res) => {
         return res.status(201).cookie("token", token, { expiresIn: "1d", httpOnly: true }).json({
             success: true,
             token,
+            user,
             message: `Welcome back ${user.username}`
         })
 
