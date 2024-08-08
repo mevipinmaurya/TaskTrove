@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import axios from "axios"
 import { USER_API_ENDPOINT } from '../utils/Constant';
 import { useNavigate } from "react-router-dom"
 import { toast } from 'react-toastify';
+import { TaskContext } from '../context/TaskContext';
 
 const RegistrationPage = () => {
 
@@ -11,6 +12,8 @@ const RegistrationPage = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const {setId} = useContext(TaskContext);
 
     const navigate = useNavigate();
 
@@ -33,8 +36,10 @@ const RegistrationPage = () => {
                     setEmail("");
                     setPassword("");
                     navigate("/")
-                    console.log(res)
+                    // console.log(res)
 
+                    // console.log(res.data.user._id);
+                    setId(res.data.user._id);
                     localStorage.setItem("token", res.data.token)
 
                     toast.success(res.data.message);

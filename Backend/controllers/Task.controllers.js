@@ -73,4 +73,22 @@ const deleteTask = async (req, res)=>{
     }
 }
 
-export {addTask, updateTask, deleteTask}
+// Fetch Tasks
+const getTask = async(req, res)=>{
+    try {
+        const {id} = req.body;
+        const allTask = await Task.find({userId : id});
+
+        return res.status(201).json({
+            tasks : allTask
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(401).json({
+            success : false,
+            message : "Error"
+        })
+    }
+}
+
+export {addTask, updateTask, deleteTask, getTask}

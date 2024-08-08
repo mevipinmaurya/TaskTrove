@@ -13,7 +13,7 @@ const App = () => {
 
   useEffect(() => {
     const authToken = localStorage.getItem("token");
-    console.log(authToken)
+    // console.log(authToken)
     if (authToken === null) {
       navigate("/register");
     }
